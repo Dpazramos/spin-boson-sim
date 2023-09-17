@@ -8,7 +8,7 @@ import numpy as np
 
 
 def jaynes_cummings_ham(Delta: int = 0, g: int = 1, cutoff = 2):
-
+    """Jaynes-Cummings Hamiltonian."""
     h_tls = ([sigmaz(), identity(cutoff)], 0.5 * Delta)
     h_int1 = ([sigmap(), destroy(cutoff)], g)
     h_int2 = ([sigmam(), create(cutoff)], g)
