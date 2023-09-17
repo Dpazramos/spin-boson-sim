@@ -19,6 +19,27 @@ def jaynes_cummings_ham(Delta: int = 0, g: int = 1, cutoff = 2):
 
     return HamiltonianList(H_list, photon_ind, cutoff)
 
+def tavis_cummings_ham(n_atoms: int, cutoff: int, omega, g):
+    """Tavis-Cummings Hamiltonian.
+    Args:
+        n_atoms (int): num. of atoms in the system
+        cutoff (int): cutoff for photon dimension
+        omega: photonic mode frequency
+        g: interaction strength
+    Returns:
+        HamiltonianList of the TC-model.
+    """
+    h_ph = ([num(cutoff)] + [qeye(2) for i in range(n_atoms)], omega)
+    h_tls = lambda i: ([qeye(cutoff)] + [sigmaz() if i==j else qeye(2) for j in range(n_atoms)], omega*0.5)
+    h_int1 = lambda i: ([create(cutoff)] + [sigmam() if i==j else qeye(2) for j in range(n_atoms)], -g*0.5)
+    h_int2 = lambda i: ([destroy(cutoff)] + [sigmap() if i==j else qeye(2) for j in range(n_atoms)], -g*0.5)
+    
+    h_list = [h_ph] + [h_tls(i) for i in range(n_atoms)] + [h_int1(i) for i in range(n_atoms)] + \
+             [h_int2(i) for i in range(n_atoms)]
+    photon_ind = [0]
+
+    return HamiltonianList(h_list, photon_ind, cutoff)
+
 
 ### HamiltonianList class ###
 
