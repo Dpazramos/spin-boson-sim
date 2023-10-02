@@ -31,8 +31,8 @@ def tavis_cummings_ham(n_atoms: int, cutoff: int, omega, g):
     """
     h_ph = ([num(cutoff)] + [qeye(2) for i in range(n_atoms)], omega)
     h_tls = lambda i: ([qeye(cutoff)] + [sigmaz() if i==j else qeye(2) for j in range(n_atoms)], omega*0.5)
-    h_int1 = lambda i: ([create(cutoff)] + [sigmam() if i==j else qeye(2) for j in range(n_atoms)], -g*0.5)
-    h_int2 = lambda i: ([destroy(cutoff)] + [sigmap() if i==j else qeye(2) for j in range(n_atoms)], -g*0.5)
+    h_int1 = lambda i: ([create(cutoff)] + [sigmam() if i==j else qeye(2) for j in range(n_atoms)], g)
+    h_int2 = lambda i: ([destroy(cutoff)] + [sigmap() if i==j else qeye(2) for j in range(n_atoms)], g)
     
     h_list = [h_ph] + [h_tls(i) for i in range(n_atoms)] + [h_int1(i) for i in range(n_atoms)] + \
              [h_int2(i) for i in range(n_atoms)]
