@@ -104,6 +104,9 @@ for i in range(t.size):
     trotter_probabilities.append(trotter_results[i].get_counts().get("1"*n_qubits, 0)/shots)
 np.savetxt(output_folder+"/trotter_probabilities.out", trotter_probabilities)
 
+with open(output_folder+"/trotter_circuits.pickle", 'wb') as f:
+    pickle.dump(circuit_list, f, pickle.HIGHEST_PROTOCOL)
+
 
 ###########
 ### ISL ###
