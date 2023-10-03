@@ -51,7 +51,7 @@ g = 10
 delta_t = args.delta_t
 steps = args.n_steps
 T = delta_t * steps
-t = np.linspace(0, T, steps)
+t = np.linspace(0, T, steps+1)
 
 h = tavis_cummings_ham(n_atoms, cutoff, omega, g)
 h_qt = h.full_hamiltonian()
@@ -64,7 +64,7 @@ trotter = PauliEvolutionGate(h_q, time=t[1])
 #######################
 
 psi0 = qt.tensor(*([qt.basis(cutoff, 1)] + [qt.basis(2, 1) for _ in range(n_atoms)])).unit()
-exact_t = np.linspace(0, T, 100)
+exact_t = np.linspace(0, T, 5*steps+1)
 exact_result = qt.sesolve(h_qt, psi0, exact_t, [])
 qt.qsave(exact_result, output_folder+"/qutip_data")
 
