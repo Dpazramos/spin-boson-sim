@@ -143,7 +143,7 @@ for i in range(t.size):
     isl_results.append(result)
     previous_circ = result['circuit'].copy()
     isl_circuits.append(result['circuit'])
-    print("step {}/{}\t{}\t{} s".format(i+1, t.size, result['overlap'], result['time_taken']))
+    print("step {}/{}\t{:.4f}\t{:.2f} s".format(i+1, t.size, result['overlap'], result['time_taken']))
 print("ISL end.\n")
 with open(output_folder+"/isl_results.pickle", 'wb') as f:
     pickle.dump(isl_results, f, pickle.HIGHEST_PROTOCOL)
