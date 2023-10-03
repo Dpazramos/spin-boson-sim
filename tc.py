@@ -64,7 +64,7 @@ trotter = PauliEvolutionGate(h_q, time=t[1])
 #######################
 
 psi0 = qt.tensor(*([qt.basis(cutoff, 1)] + [qt.basis(2, 1) for _ in range(n_atoms)])).unit()
-exact_t = np.linspace(0, T, 100)
+exact_t = np.linspace(0, T, 5*steps)
 exact_result = qt.sesolve(h_qt, psi0, exact_t, [])
 qt.qsave(exact_result, output_folder+"/qutip_data")
 
@@ -145,6 +145,7 @@ print("ISL end.\n")
 with open(output_folder+"/isl_results.pickle", 'wb') as f:
     pickle.dump(isl_results, f, pickle.HIGHEST_PROTOCOL)
 
+isl_qiskit_results = []
 isl_probabilities = []
 for i in range(t.size):
     circ = isl_circuits[i].copy()
@@ -152,4 +153,6 @@ for i in range(t.size):
     circ.measure_all()
     result = execute(circ, backend, shots=shots).result()
     isl_probabilities.append(result.get_counts().get("1" * n_qubits, 0) / shots)
+with open(output_folder+"/isl_qiskit_results.pickle", 'wb') as f:
+    pickle.dump(isl_qiskit_results, f, pickle.HIGHEST_PROTOCOL)
 np.savetxt(output_folder+"/isl_probabilities.out", isl_probabilities)
