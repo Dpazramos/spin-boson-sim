@@ -51,7 +51,7 @@ g = 10
 delta_t = args.delta_t
 steps = args.n_steps
 T = delta_t * steps
-t = np.linspace(0, T, steps)
+t = np.linspace(0, T, steps+1)
 
 h = tavis_cummings_ham(n_atoms, cutoff, omega, g)
 h_qt = h.full_hamiltonian()
@@ -64,7 +64,7 @@ trotter = PauliEvolutionGate(h_q, time=t[1])
 #######################
 
 psi0 = qt.tensor(*([qt.basis(cutoff, 1)] + [qt.basis(2, 1) for _ in range(n_atoms)])).unit()
-exact_t = np.linspace(0, T, 5*steps)
+exact_t = np.linspace(0, T, 5*steps+1)
 exact_result = qt.sesolve(h_qt, psi0, exact_t, [])
 qt.qsave(exact_result, output_folder+"/qutip_data")
 
@@ -104,6 +104,9 @@ for i in range(t.size):
     trotter_probabilities.append(trotter_results[i].get_counts().get("1"*n_qubits, 0)/shots)
 np.savetxt(output_folder+"/trotter_probabilities.out", trotter_probabilities)
 
+with open(output_folder+"/trotter_circuits.pickle", 'wb') as f:
+    pickle.dump(circuit_list, f, pickle.HIGHEST_PROTOCOL)
+
 
 ###########
 ### ISL ###
@@ -140,7 +143,7 @@ for i in range(t.size):
     isl_results.append(result)
     previous_circ = result['circuit'].copy()
     isl_circuits.append(result['circuit'])
-    print("step {}/{}\t{}\t{} s".format(i+1, t.size, result['overlap'], result['time_taken']))
+    print("step {}/{}\t{:.4f}\t{:.2f} s".format(i+1, t.size, result['overlap'], result['time_taken']))
 print("ISL end.\n")
 with open(output_folder+"/isl_results.pickle", 'wb') as f:
     pickle.dump(isl_results, f, pickle.HIGHEST_PROTOCOL)

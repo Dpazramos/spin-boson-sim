@@ -4,4 +4,6 @@ __pycache__/
 *.ipynb
 *.pickle
 *.sh
+*.qu
+*.out
 
