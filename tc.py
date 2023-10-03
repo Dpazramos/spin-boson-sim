@@ -155,6 +155,7 @@ for i in range(t.size):
     circ.save_density_matrix()
     circ.measure_all()
     result = execute(circ, backend, shots=shots).result()
+    isl_qiskit_results.append(result)
     isl_probabilities.append(result.get_counts().get("1" * n_qubits, 0) / shots)
 with open(output_folder+"/isl_qiskit_results.pickle", 'wb') as f:
     pickle.dump(isl_qiskit_results, f, pickle.HIGHEST_PROTOCOL)
