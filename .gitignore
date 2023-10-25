@@ -9,3 +9,4 @@ __pycache__/
 *.out
 *.mplstyle
 *.h5
+*.qasm
