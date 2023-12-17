@@ -1,13 +1,6 @@
-figures/
 __pycache__/
 .pytest_cache/
 .vscode/
-.ipynb_checkpoints/
-*.ipynb
 *.pickle
-*.sh
 *.qu
 *.out
-*.mplstyle
-*.h5
-*.qasm
