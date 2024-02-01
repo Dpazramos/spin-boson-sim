@@ -16,7 +16,6 @@ def singlequbit_ketbra(i, j) -> SparsePauliOp:
     Args:
         i (int): Index of ket-vector |i>.
         j (int): Index of bra-vector <j|.
-        qubit_ind (int): Index of the qubit which the operator acts on.
 
     Returns:
         SparsePauliOp
@@ -46,7 +45,6 @@ def ketbra(n: int, k: int, n_qubits: int, encoding: str = 'standard') -> SparseP
         n (int): Basis state index of ket-vector |n>.
         k (int): Basis state index of bra-vector <k|.
         n_qubits (int): Number of qubits.
-        first_qubit (int): Optional shift to qubit indices.
         encoding (str): How n and k are converted to binary strings.
             Options: standard (binary) and graycode.
 
