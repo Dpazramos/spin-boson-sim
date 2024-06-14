@@ -1,13 +1,10 @@
 from src.hamiltonian import *
+#coding: utf-8
+#!/usr/bin/env python
 
-'''
-# coding: utf-8
-# !/usr/bin/env python
-
-Example command:
-python -u "C:\Users\Daniel Paz\OneDrive\Escritorio\Aalto\MQS\code\alisa_thesis\spin-boson-sim\tc.py" 1 0.01 20 1024 0.01 -o output --noisy_isl
-'''
-
+# Example command:
+# python -u "C:\Users\Daniel Paz\OneDrive\Escritorio\Aalto\MQS\code\alisa_thesis\spin-boson-sim\tc.py" 1 0.01 20 1024 0.01 -o output --noisy_isl
+# Runs the simulation for N=1 atom, with delta_t=0.1, 20 steps, 1024 shots, 1e-2 tolerance, storing the results in the output folder, and considering noisy_isl simulations
 
 import argparse
 from isl.recompilers import ISLRecompiler, ISLConfig
