@@ -1,7 +1,13 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 from src.hamiltonian import *
+
+'''
+# coding: utf-8
+# !/usr/bin/env python
+
+Example command:
+python -u "C:\Users\Daniel Paz\OneDrive\Escritorio\Aalto\MQS\code\alisa_thesis\spin-boson-sim\tc.py" 1 0.01 20 1024 0.01 -o output --noisy_isl
+'''
+
 
 import argparse
 from isl.recompilers import ISLRecompiler, ISLConfig
@@ -15,7 +21,6 @@ from qiskit.circuit.library import PauliEvolutionGate
 from qiskit.compiler import transpile
 from qiskit.providers.fake_provider import FakeNairobi
 from qiskit_aer import AerSimulator
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument("n_atoms", help="number of two-level systems", type=int)

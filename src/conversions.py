@@ -7,7 +7,7 @@ def graycode(n: int) -> str:
     """Returns a binary string representing integer n in the Gray code."""
     gray = n^(n>>1)
     return bin(gray)[2:]
-
+    """"""
 
 def singlequbit_ketbra(i, j) -> SparsePauliOp:
     """Converts |i><j| = |0><0|, |0><1|, |1><0| or |1><1| to the corresponding
@@ -78,7 +78,8 @@ def qobj_to_sparsepauliop(qobj: Qobj, n_qubits: int, encoding: str = 'standard')
     The returned operator assumes Qiskit qubit ordering.
     """
     mat = qobj.data.tocoo()
-    #n_qubits = int(np.log2(mat.shape[0]))
+    # n_qubits = int(np.log2(mat.shape[0]))
+    # print("n_qubits:", n_qubits, "log:", int(np.log2(mat.shape[0])))
 
     # empty object
     if mat.data.size == 0:

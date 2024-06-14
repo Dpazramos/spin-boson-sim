@@ -1,0 +1,8 @@
+# (Daniel) Test the defined functions and classes in the repository
+from qiskit.quantum_info import SparsePauliOp
+from src.hamiltonian import *
+
+h = HamiltonianList([([create(4), sigmaz()], 1.0)], [0, 1], 4)
+h_map = h.map_to_qubits()
+print(h_map)
+
