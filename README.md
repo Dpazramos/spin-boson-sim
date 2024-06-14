@@ -1,3 +1,10 @@
+## Fork information
+This fork has been adapted to further expand upon the work carried out in Alisa Haukisalmi's master thesis
+
+(https://aaltodoc.aalto.fi/items/d3900ebc-d9cf-4cde-a4f6-01e84a31c1d1)
+
+---
+
 # Spin-boson simulation
 
 Tools for simulating spin-boson Hamiltonians with Qiskit.
