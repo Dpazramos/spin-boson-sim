@@ -2,7 +2,7 @@ import pickle
 import os
 
 # Get directory to the output folder
-path_out = os.path.join(os.getcwd(), 'output')
+path_out = os.path.join(os.getcwd(), '../output')
 out_files = os.listdir(path_out)
 
 # Get all pickle files in the output folder

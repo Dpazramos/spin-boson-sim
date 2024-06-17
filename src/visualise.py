@@ -3,7 +3,7 @@ import os
 import numpy as np
 
 # Get directory to the output folder
-path_out = os.path.join(os.getcwd(), 'output')
+path_out = os.path.join(os.getcwd(), '../output')
 out_files = os.listdir(path_out)
 
 # Define function to read_out .out files

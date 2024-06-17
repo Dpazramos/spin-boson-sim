@@ -29,7 +29,7 @@ def tavis_cummings_ham(n_atoms: int, cutoff: int, omega, g):
     Returns:
         HamiltonianList of the TC-model.
     """
-    h_ph = ([num(cutoff)] + [qeye(2) for i in range(n_atoms)], omega)
+    h_ph = ([num(cutoff)] + [qeye(2) for _ in range(n_atoms)], omega)
     # These are functions dependent on i
     h_tls = lambda i: ([qeye(cutoff)] + [sigmaz() if i==j else qeye(2) for j in range(n_atoms)], omega*0.5)
     h_int1 = lambda i: ([create(cutoff)] + [sigmam() if i==j else qeye(2) for j in range(n_atoms)], g)
@@ -85,9 +85,12 @@ class HamiltonianList:
     def full_hamiltonian(self) -> Qobj:
         """Returns the full Hamiltonian based on the list."""
         ham = Qobj()
+        print(self.num_terms())
         for i in range(self.num_terms()):
             factors = self.terms[i][0]
             coeff = self.terms[i][1]
+            print(np.shape(factors))
+            print(np.shape(coeff))
             ham += coeff * tensor(factors)
         return ham
         

@@ -55,7 +55,13 @@ steps = args.n_steps
 T = delta_t * steps
 t = np.linspace(0, T, steps+1)
 
-h = tavis_cummings_ham(n_atoms, cutoff, omega, g)
+H_test_1 = [qeye(cutoff)] + [sigmaz()]
+print("H test1:", np.shape(H_test_1), H_test_1)
+H_test_2 = [qeye(cutoff)] + [qeye(2) for j in range(n_atoms)]
+print("H test2:", np.shape(H_test_2))
+
+h = jaynes_cummings_ham() #tavis_cummings_ham(n_atoms, cutoff, omega, g)
+print("Sigma Z:", np.shape(sigmaz()))
 h_qt = h.full_hamiltonian()
 h_q = h.map_to_qubits('graycode')   # quantum_info class
 
