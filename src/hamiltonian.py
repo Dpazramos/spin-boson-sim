@@ -87,6 +87,7 @@ class HamiltonianList:
         ham = Qobj()
         print(self.num_terms())
         for i in range(self.num_terms()):
+            # print(f"index {i}", self.terms[i][0], "\n\n", self.terms[i][1])
             factors = self.terms[i][0]
             coeff = self.terms[i][1]
             print(np.shape(factors))
