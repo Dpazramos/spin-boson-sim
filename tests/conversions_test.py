@@ -1,5 +1,5 @@
 import pytest
-from src.conversions import *
+from src.utils.cross_conversions import *
 from qutip import *
 from qiskit.quantum_info import SparsePauliOp, Statevector
 

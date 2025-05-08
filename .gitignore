@@ -1,6 +1,7 @@
 __pycache__/
-.pytest_cache/
 .vscode/
-*.pickle
-*.qu
-*.out
+.idea/
+notebooks/
+output/
+local/
+requirements.txt/

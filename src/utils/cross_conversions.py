@@ -1,13 +1,11 @@
-import numpy as np
-from qutip import *
 from qiskit.quantum_info import SparsePauliOp
+from qutip import Qobj
 
 
 def graycode(n: int) -> str:
     """Returns a binary string representing integer n in the Gray code."""
     gray = n^(n>>1)
     return bin(gray)[2:]
-    """"""
 
 def singlequbit_ketbra(i, j) -> SparsePauliOp:
     """Converts |i><j| = |0><0|, |0><1|, |1><0| or |1><1| to the corresponding
